@@ -16,13 +16,13 @@ function Show(props) {
     // handleSubmit for form
     const handleSubmit = event => {
         event.preventDefault()
-        props.updateCheese(editForm)
+        props.updateCheeses(editForm)
         // redirect cheese back to index
         props.history.push("/")
     }
 
     const removeCheese = () => {
-        props.deleteCheese(cheese._id)
+        props.deleteCheeses(cheese._id)
         props.history.push("/")
     }
 

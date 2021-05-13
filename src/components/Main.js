@@ -6,7 +6,7 @@ import Show from "../pages/Show";
 function Main(props) {
   const [cheese, setCheese] = useState(null);
 
-  const URL = "http://localhost:4000/cheese/";
+  const URL = "https://dashboard.heroku.com/apps/cheese-app-lab-day-1/cheese/";
 
   const getCheese= async () => {
     const response = await fetch(URL);
@@ -14,7 +14,7 @@ function Main(props) {
     setCheese(data);
   };
 
-  const createCheese = async (cheese) => {
+  const createCheese = async cheese => {
     // make post request to create cheese
     await fetch(URL, {
       method: "post",

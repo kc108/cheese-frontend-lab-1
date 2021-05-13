@@ -5,17 +5,17 @@ import Show from "../pages/Show";
 
 function Main(props) {
 
-  const [cheese, setCheese] = useState(null);
+  const [cheeses, setCheeses] = useState(null);
 
-  const URL = "https://cheese-app-lab-day-1.herokuapp.com/cheese";
+  const URL = "https://cheese-app-lab-day-1.herokuapp.com/cheese/";
 
-  const getCheese= async () => {
+  const getCheeses = async () => {
     const response = await fetch(URL);
     const data = await response.json();
-    setCheese(data);
+    setCheeses(data);
   };
 
-  const createCheese = async cheese => {
+  const createCheeses = async cheese => {
     // make post request to create cheese
     await fetch(URL, {
       method: "post",
@@ -23,13 +23,13 @@ function Main(props) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(cheese),
-    });
+    })
     // update list of cheese
-    getCheese();
-  };
+    getCheeses();
+  }
 
   // UPDATE FUNCTION
-  const updateCheese = async (cheese, id) => {
+  const updateCheeses = async (cheese, id) => {
     // make post request to create people
     await fetch(URL + id, {
         method: "put",
@@ -38,34 +38,34 @@ function Main(props) {
         },
         body: JSON.stringify(cheese),
     })
-    // update list of people
-    getCheese()
+    // update list of cheeses
+    getCheeses()
 }
 
 
   // DELETE FUNCTION
-  const deleteCheese = async id => {
+  const deleteCheeses = async id => {
     // make post request to create people
     await fetch(URL + id, {
         method: "delete",
     })
   }
 
-  useEffect(() => getCheese(), []);
+  useEffect(() => getCheeses(), []);
 
   return (
     <main>
       <Switch>
         <Route exact path="/">
-          <Index cheese={cheese} createCheese={createCheese} />
+          <Index cheeses={cheeses} createCheeses={createCheeses} />
         </Route>
         <Route
           path="/cheese/:id"
           render={(rp) => (
             <Show
-            cheese={cheese}
-            updateCheese={updateCheese}
-            deleteCheese={deleteCheese}
+            cheeses={cheeses}
+            updateCheeses={updateCheeses}
+            deleteCheeses={deleteCheeses}
               {...rp}
             />
           )}

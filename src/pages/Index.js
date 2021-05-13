@@ -17,7 +17,7 @@ function Index(props) {
   // handle submit function for form
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.createCheese(newForm);
+    props.createCheeses(newForm);
     setNewForm({
       name: "",
       countryOfOrigin: "",

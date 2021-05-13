@@ -4,9 +4,10 @@ import Index from "../pages/Index";
 import Show from "../pages/Show";
 
 function Main(props) {
+
   const [cheese, setCheese] = useState(null);
 
-  const URL = "https://dashboard.heroku.com/apps/cheese-app-lab-day-1/cheese/";
+  const URL = "https://cheese-app-lab-day-1.herokuapp.com/cheese";
 
   const getCheese= async () => {
     const response = await fetch(URL);
